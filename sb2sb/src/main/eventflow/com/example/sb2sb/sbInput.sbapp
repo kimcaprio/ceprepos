@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.5.0_ccb32e4ca924f05a0d59933f58d9d573d97e7fa1">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="com.example.sb2sb.sbInput"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <dynamic-variables/>
+        <stream name="InputStream">
+            <schema>
+                <field name="param" type="string"/>
+            </schema>
+        </stream>
+        <box name="Map" type="map">
+            <input port="1" stream="InputStream"/>
+            <output port="1" stream="out:Map_1"/>
+            <target-list>
+                <item name="input" selection="all"/>
+            </target-list>
+        </box>
+        <box name="OutputAdapter" type="outputadapter">
+            <input port="1" stream="out:Map_1"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.sbd2sbdoutput.SBD2SBDOutput"/>
+            <param name="AuthnType" value="No authentication"/>
+            <param name="CaptureStrategy" value="FLATTEN"/>
+            <param name="ConnectOnInit" value="true"/>
+            <param name="DownStreamContainer" value="default"/>
+            <param name="DownStreamHost" value="cep-service"/>
+            <param name="DownStreamPort" value="10000"/>
+            <param name="DownStreamStream" value="InputStream"/>
+            <param name="EnableControlPort" value="false"/>
+            <param name="EnableEventPort" value="false"/>
+            <param name="EnqueueBufferSize" value="100"/>
+            <param name="EnqueueFlushInterval" value="100"/>
+            <param name="ExplicitURI" value=""/>
+            <param name="Keystore" value=""/>
+            <param name="LowLatency" value="false"/>
+            <param name="Password" value=""/>
+            <param name="ReconnectInterval" value="5"/>
+            <param name="SchemaMatching" value="Match field names"/>
+            <param name="UserName" value=""/>
+            <param name="logLevel" value="INFO"/>
+            <param name="useSSL" value="false"/>
+        </box>
+    </add>
+</modify>

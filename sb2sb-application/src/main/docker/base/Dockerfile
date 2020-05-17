@@ -15,6 +15,7 @@ ENV RUNTIME_HOME     /var/opt/tibco/streambase
 ENV JAVA_HOME        /etc/alternatives/jre
 ENV PATH             /bin:/usr/sbin:${PRODUCT_HOME}/distrib/tibco/bin
 ENV USER_NAME        tibco
+ENV USER_ID			 100060000
 
 #
 # Add required additional packages
@@ -46,6 +47,7 @@ RUN /usr/sbin/useradd \
     --comment "TIBCO StreamBase Guest User" \
     --create-home \
     --user-group \
+    --user-id ${USER_ID}
     --password ${USER_NAME} \
     --shell /bin/bash \
     ${USER_NAME}
@@ -67,4 +69,4 @@ RUN chown ${USER_NAME}:${USER_NAME} ${RUNTIME_HOME}
 #
 # Change to guest user
 #
-USER ${USER_NAME}
+USER ${USER_ID}

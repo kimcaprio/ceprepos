@@ -1,1 +1,7 @@
-/target/
+*.jar
+/javadoc*
+/maven-*
+/src/
+*.conf
+*.xml
+*.properties
